@@ -24,5 +24,11 @@ airflow_home = BashOperator(
     dag=dag
 )
 
+list_airflow_home = BashOperator(
+    task_id='airflow_home',
+    bash_command='ls AIRFLOW_HOME',
+    dag=dag
+)
+
 # Define the task dependencies
-print_current_pwd >> airflow_home
+print_current_pwd >> airflow_home >> list_airflow_home
