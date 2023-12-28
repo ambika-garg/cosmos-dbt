@@ -18,11 +18,11 @@ print_current_pwd = BashOperator(
     dag=dag
 )
 
-airflow_home = BashOperator(
-    task_id='airflow_home',
-    bash_command='printenv AIRFLOW_HOME',
-    dag=dag
-)
+# airflow_home = BashOperator(
+#     task_id='airflow_home',
+#     bash_command='printenv AIRFLOW_HOME',
+#     dag=dag
+# )
 
 list_airflow_home = BashOperator(
     task_id='list_airflow_home',
@@ -31,4 +31,5 @@ list_airflow_home = BashOperator(
 )
 
 # Define the task dependencies
-print_current_pwd >> airflow_home >> list_airflow_home
+print_current_pwd >>  list_airflow_home
+# airflow_home >>
