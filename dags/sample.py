@@ -30,6 +30,11 @@ list_airflow_home = BashOperator(
     dag=dag
 )
 
+list_requirements = BashOperator(
+    task_id = "list_requirements",
+    bash_command = "pip freeze"
+)
+
 # Define the task dependencies
-print_current_pwd >>  list_airflow_home
+print_current_pwd >> list_airflow_home >> list_requirements
 # airflow_home >>
