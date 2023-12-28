@@ -25,7 +25,7 @@ airflow_home = BashOperator(
 )
 
 list_airflow_home = BashOperator(
-    task_id='airflow_home',
+    task_id='list_airflow_home',
     bash_command='ls AIRFLOW_HOME',
     dag=dag
 )
