@@ -18,5 +18,11 @@ print_current_pwd = BashOperator(
     dag=dag
 )
 
+airflow_home = BashOperator(
+    task_id='airflow_home',
+    bash_command='printenv AIRFLOW_HOME',
+    dag=dag
+)
+
 # Define the task dependencies
-print_current_pwd
+print_current_pwd >> airflow_home
