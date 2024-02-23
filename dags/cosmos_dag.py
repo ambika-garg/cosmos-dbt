@@ -12,7 +12,7 @@ DBT_ROOT_PATH = Path(os.getenv("DBT_ROOT_PATH", DEFAULT_DBT_ROOT_PATH))
 profile_config = ProfileConfig(
     profile_name="jaffle_shop",
     target_name="fabric-dev",
-    profiles_yml_filepath="/opt/airflow/git/cosmos-dbt.git/dags/jaffle_shop/profiles.yml",
+    profiles_yml_filepath=Path("/opt/airflow/git/cosmos-dbt.git/dags/jaffle_shop/profiles.yml"),
     # profiles_yml_filepath=DBT_ROOT_PATH / "profiles.yml",
 )
 
