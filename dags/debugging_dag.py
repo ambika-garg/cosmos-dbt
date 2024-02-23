@@ -15,9 +15,9 @@ with DAG(
     # Tasks are represented as operators
     task1 = BashOperator(task_id="task1", bash_command="pwd")
 
-    task2 = BashOperator(task_id="task2", bash_command="echo $DEFAULT_DBT_ROOT_PATH")
+    task2 = BashOperator(task_id="task2", bash_command="echo $DEFAULT_DBT_ROOT_PATH", env={"DEFAULT_DBT_ROOT_PATH": str(DEFAULT_DBT_ROOT_PATH)})
 
-    task3 = BashOperator(task_id="task3", bash_command="echo $SAMPLE")
+    task3 = BashOperator(task_id="task3", bash_command="echo $SAMPLE", env={"SAMPLE": SAMPLE})
 
     task4 = BashOperator(task_id="task4", bash_command="echo task4")
 
