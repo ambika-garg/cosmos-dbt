@@ -1,6 +1,9 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.bash import BashOperator
+from pathlib import Path
+
+DEFAULT_DBT_ROOT_PATH = Path(__file__).parent.parent / "dags" / "jaffle_shop"
 
 with DAG(
     dag_id="hello-world",
@@ -11,7 +14,7 @@ with DAG(
     # Tasks are represented as operators
     task1 = BashOperator(task_id="task1", bash_command="pwd")
 
-    task2 = BashOperator(task_id="task2", bash_command="echo task2")
+    task2 = BashOperator(task_id="task2", bash_command="echo $DEFAULT_DBT_ROOT_PATH")
 
     task3 = BashOperator(task_id="task3", bash_command="echo task3")
 
