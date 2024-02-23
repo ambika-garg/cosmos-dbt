@@ -19,7 +19,7 @@ with DAG(
 
     task3 = BashOperator(task_id="task3", bash_command="echo $SAMPLE", env={"SAMPLE": SAMPLE})
 
-    task4 = BashOperator(task_id="task4", bash_command="echo task4")
+    task4 = BashOperator(task_id="task4", bash_command="ls $DEFAULT_DBT_ROOT_PATH", env={"DEFAULT_DBT_ROOT_PATH": str(DEFAULT_DBT_ROOT_PATH)})
 
     # Set dependencies between tasks
     task1 >> task2 >> task3 >> task4
