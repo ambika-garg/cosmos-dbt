@@ -4,6 +4,7 @@ from airflow.operators.bash import BashOperator
 from pathlib import Path
 
 DEFAULT_DBT_ROOT_PATH = Path(__file__).parent.parent / "dags" / "jaffle_shop"
+SAMPLE = "ambika"
 
 with DAG(
     dag_id="hello-world",
@@ -16,7 +17,7 @@ with DAG(
 
     task2 = BashOperator(task_id="task2", bash_command="echo $DEFAULT_DBT_ROOT_PATH")
 
-    task3 = BashOperator(task_id="task3", bash_command="echo task3")
+    task3 = BashOperator(task_id="task3", bash_command="echo $SAMPLE")
 
     task4 = BashOperator(task_id="task4", bash_command="echo task4")
 
