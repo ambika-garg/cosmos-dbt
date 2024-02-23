@@ -5,7 +5,7 @@ from pathlib import Path
 
 # DEFAULT_DBT_ROOT_PATH = Path(__file__).parent.parent / "dags" / "jaffle_shop"
 
-DEFAULT_DBT_ROOT_PATH = "https://github.com/ambika-garg/cosmos-dbt.git/dags/jaffle_shop"
+DEFAULT_DBT_ROOT_PATH = "/opt/airflow/git/cosmos-dbt.git/dags/jaffle_shop"
 
 DBT_ROOT_PATH = Path(os.getenv("DBT_ROOT_PATH", DEFAULT_DBT_ROOT_PATH))
 
