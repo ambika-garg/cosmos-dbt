@@ -3,7 +3,7 @@ from datetime import datetime
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
 
-from dags.test_python_callable import test
+from test_python_callable import test
 
 default_args = {
     "owner": 'Airflow',
