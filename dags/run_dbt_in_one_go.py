@@ -17,7 +17,7 @@ def simple_dbt_dag():
     dbt_run = BashOperator(
         task_id="dbt_run",
         # bash_command="source $PATH_TO_DBT_VENV && dbt run --models .",
-        bash_command="dbt run --select $DEFAULT_DBT_ROOT_PATH",
+        bash_command="cd $DEFAULT_DBT_ROOT_PATH && dbt run --models",
         env={"DEFAULT_DBT_ROOT_PATH": str(DEFAULT_DBT_ROOT_PATH)},
         # env={"PATH_TO_DBT_VENV": PATH_TO_DBT_VENV},
         cwd=DEFAULT_DBT_ROOT_PATH,
