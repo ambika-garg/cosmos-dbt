@@ -3,7 +3,7 @@ from airflow.decorators import dag
 from airflow.operators.bash import BashOperator
 from pathlib import Path
 
-PATH_TO_DBT_PROJECT = Path(__file__).parent.parent / "dags" / "jaffle_shop"
+DEFAULT_DBT_ROOT_PATH = Path(__file__).parent.parent / "dags" / "jaffle_shop"
 # PATH_TO_DBT_VENV = "<path to your venv activate binary>"
 
 
@@ -17,9 +17,10 @@ def simple_dbt_dag():
     dbt_run = BashOperator(
         task_id="dbt_run",
         # bash_command="source $PATH_TO_DBT_VENV && dbt run --models .",
-        bash_command="dbt run --models",
+        bash_command="dbt run --select $DEFAULT_DBT_ROOT_PATH",
+        env={"DEFAULT_DBT_ROOT_PATH": str(DEFAULT_DBT_ROOT_PATH)}
         # env={"PATH_TO_DBT_VENV": PATH_TO_DBT_VENV},
-        cwd=PATH_TO_DBT_PROJECT,
+        cwd=DEFAULT_DBT_ROOT_PATH,
     )
 
     dbt_run
