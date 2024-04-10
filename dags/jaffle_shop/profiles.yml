@@ -11,5 +11,5 @@ jaffle_shop:
       database: "postgres-warehouse"
       schema: dbo
       authentication: ActiveDirectoryPassword
-      user: "{{ env_var('USERNAME') }}"
-      password: "{{ env_var('PASSWORD') }}"
+      user: "{{ env_var('DBT_USER') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
