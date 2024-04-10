@@ -6,10 +6,10 @@ jaffle_shop:
     fabric-dev:
       type: fabric
       driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
-      server: "lfq2eq4ojyvejh44zn5bgsa5ja-dggi7l3kemauzowjworwbxdh2i.msit-datawarehouse.fabric.microsoft.com"
+      server: "x6eps4xrq2xudenlfv6naeo3i4-nkbn5kalhahujjtdo4w6y2qbeu.msit-datawarehouse.fabric.microsoft.com"
       port: 1433
-      database: "contoso-warehouse"
+      database: "postgres-warehouse"
       schema: dbo
       authentication: ActiveDirectoryPassword
-      user: Admin@FabricMSIT.onmicrosoft.com
-      password: Y1atqV#to)[v;^z
+      user: "{{ env_var('USERNAME') }}"
+      password: "{{ env_var('PASSWORD') }}"
