@@ -1,15 +1,17 @@
 config:
-    partial_parse: true
+  partial_parse: true
 jaffle_shop:
   target: fabric-dev
   outputs:
     fabric-dev:
       type: fabric
-      driver: 'ODBC Driver 18 for SQL Server' # (The ODBC Driver installed on your system)
-      server: "lfq2eq4ojyvejh44zn5bgsa5ja-dggi7l3kemauzowjworwbxdh2i.msit-datawarehouse.fabric.microsoft.com"
+      driver: "ODBC Driver 18 for SQL Server"
+      server: x6eps4xrq2xudenlfv6naeo3i4-gh6evkuht23ulnfo6mkcbq3cci.dxt-datawarehouse.fabric.microsoft.com
       port: 1433
-      database: "contoso-warehouse"
+      database: "dbt-dwh"
       schema: dbo
-      authentication: ActiveDirectoryPassword
-      user: Admin@FabricMSIT.onmicrosoft.com
-      password: Y1atqV#to)[v;^z
+      threads: 4
+      authentication: ServicePrincipal
+      tenant_id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+      client_id: 7118199e-ba73-4162-b807-b4e712af30bc
+      client_secret: fPg8Q~vqlhFixhRgbOfOgoRr19JKr~_i8clsUcL4
