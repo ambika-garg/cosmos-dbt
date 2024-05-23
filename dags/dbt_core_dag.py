@@ -25,16 +25,16 @@ with DAG(
     catchup=False
 ) as dag:
 
+    dbt_debug = BashOperator(
+      task_id='dbt_debug',
+      bash_command=f'dbt debug  --profiles-dir {DBT_ROOT_PATH} --project-dir {DBT_ROOT_PATH}'
+    )
+
     # Define the tasks
     hello_task = BashOperator(
         task_id='dbt_run',
         bash_command=f"dbt run  --profiles-dir {DBT_ROOT_PATH} --project-dir {DBT_ROOT_PATH}"
     )
 
-    dbt_debug = BashOperator(
-      task_id='dbt_debug',
-      bash_command=f'dbt debug  --profiles-dir {DBT_ROOT_PATH} --project-dir {DBT_ROOT_PATH}'
-    )
-
     # Set the task dependencies
-    hello_task >> dbt_debug
+    dbt_debug >> hello_task
