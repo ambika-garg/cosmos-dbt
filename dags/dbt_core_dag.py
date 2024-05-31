@@ -29,10 +29,15 @@ with DAG(
       task_id='print_dbt_folder',
       bash_command=f'ls {DBT_ROOT_PATH}'
     )
+
+    dbt_version = BashOperator(
+      task_id='dbt_version',
+      bash_command=f'dbt --version'
+    )
     
     dbt_debug = BashOperator(
       task_id='dbt_debug',
-      bash_command=f'dbt run  --profiles-dir {DBT_ROOT_PATH} --project-dir {DBT_ROOT_PATH}'
+      bash_command=f'dbt debug  --profiles-dir {DBT_ROOT_PATH} --project-dir {DBT_ROOT_PATH}'
     )
 
     # Define the tasks
@@ -42,4 +47,4 @@ with DAG(
     )
 
     # Set the task dependencies
-    print_dbt_folder >> dbt_debug >> hello_task
+    print_dbt_folder >> dbt_version >> dbt_debug >> hello_task
