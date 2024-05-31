@@ -27,7 +27,7 @@ with DAG(
 
     print_dbt_folder = BashOperator(
       task_id='print_dbt_folder',
-      bash_command='ls && cd jaffle_shop && ls'
+      bash_command='ls'
     )
     
     dbt_debug = BashOperator(
