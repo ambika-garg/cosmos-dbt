@@ -25,6 +25,11 @@ with DAG(
     catchup=False
 ) as dag:
 
+    print_dbt_folder = BashOperator(
+      task_id='print_dbt_folder',
+      bash_command='ls jaffle_shop'
+    )
+    
     dbt_debug = BashOperator(
       task_id='dbt_debug',
       bash_command=f'dbt debug  --profiles-dir {DBT_ROOT_PATH} --project-dir {DBT_ROOT_PATH}'
@@ -37,4 +42,4 @@ with DAG(
     )
 
     # Set the task dependencies
-    dbt_debug >> hello_task
+    print_dbt_folder >> dbt_debug >> hello_task
