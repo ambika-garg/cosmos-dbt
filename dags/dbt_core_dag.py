@@ -27,7 +27,7 @@ with DAG(
 
     print_dbt_folder = BashOperator(
       task_id='print_dbt_folder',
-      bash_command=f'cd {DBT_ROOT_PATH}'
+      bash_command=f'ls {DBT_ROOT_PATH}'
     )
     
     dbt_debug = BashOperator(
