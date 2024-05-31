@@ -32,7 +32,7 @@ with DAG(
     
     dbt_debug = BashOperator(
       task_id='dbt_debug',
-      bash_command=f'dbt debug  --profiles-dir {DBT_ROOT_PATH} --project-dir {DBT_ROOT_PATH}'
+      bash_command=f'dbt run  --profiles-dir {DBT_ROOT_PATH} --project-dir {DBT_ROOT_PATH}'
     )
 
     # Define the tasks
